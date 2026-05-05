@@ -1,0 +1,61 @@
+format = """
+[┏](bold #7eb8da)\
+[$time]\
+[$username]\
+[$hostname]\
+[$memory_usage]\
+[$cmd_duration]\
+$line_break\
+[┣](bold #7eb8da)\
+[$directory]\
+[$git_branch]\
+[$git_status]\
+$line_break\
+[┗━](bold #7eb8da)$character"""
+
+[time]
+disabled = false
+format = '[\[$time\]](bold #7eb8da)'
+time_format = "%m/%d/%Y @ %I:%M:%S %p"
+
+[username]
+show_always = true
+format = '[\[ $user\]](bold #7eb8da)'
+
+[hostname]
+ssh_only = false
+format = '[\[ $hostname\]](bold #7eb8da)'
+
+[memory_usage]
+disabled = false
+threshold = 0
+format = '[\[󰍛 RAM: $ram/$ram_pct\]](bold #be9ddf)'
+
+[cmd_duration]
+min_time = 0
+format = '[\[󱦟 ${duration}\]](bold #be9ddf)'
+
+[directory]
+format = '[\[ $path\]](#98bfad)'
+truncation_length = 5
+truncate_to_repo = false
+
+[git_branch]
+format = '[\[$symbol$branch\]](bold #ffa5d8)'
+symbol = ' '
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]](bold #ffa5d8))'
+conflicted = '!'
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+untracked = '?${count}'
+stashed = '*${count}'
+modified = '~${count}'
+staged = '+${count}'
+deleted = '-${count}'
+
+[character]
+success_symbol = '[❯](bold #ffa5d8)'
+error_symbol = '[❯](bold red)'
